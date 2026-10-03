@@ -56,6 +56,11 @@ h1{margin:12px 0 4px;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:700}
 .card:hover,.card:active{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 26px rgba(255,150,190,.4)}
 .card .tag{position:absolute;top:-16px;right:18px;font-size:26px;background:var(--bg2);border:3px solid var(--soft);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center}
 .card h2{margin:0;font-size:1.5rem;font-weight:700;color:var(--ink)}
+  .card-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
 .card.game{padding:26px 22px;text-align:center}
 .card.game h2{font-size:clamp(3rem,16vw,4.6rem);line-height:1;letter-spacing:2px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -69,7 +74,13 @@ h1{margin:12px 0 4px;font-size:clamp(1.5rem,6vw,2.2rem);font-weight:700}
   <div class="menu">
     <section class="card game"><span class="tag">🎮</span><h2>Game</h2></section>
     <section class="card"><span class="tag">🌷</span><h2>About me</h2></section>
-    <section class="card"><span class="tag">📖</span><a href="https://r3ny100709.github.io/history/" style="text-decoration: none; color: inherit;"><h2>History</h2></a></section>
+    <a
+  class="card card-link"
+  href="https://r3ny100709.github.io/history/"
+>
+  <span class="tag">📖</span>
+  <h2>History</h2>
+</a>
     <section class="card"><span class="tag">⚙️</span><h2>Setting</h2></section>
   </div>
 </main>
