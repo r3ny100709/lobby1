@@ -9,18 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Mali:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================
+   ตัวแปร
+========================= */
+
 :root{
   box-sizing:border-box;
 
   --ink:#c2547a;
   --soft:#ffb8d0;
-  --fur-line:#f3c4d4;
-  --ear:#ffc1d6;
-  --cheek:#ffa6c4;
-  --fur:#ffffff;
+  --line:#f3c4d4;
 
   --card:rgba(255,255,255,.72);
 }
+
 
 /* =========================
    พื้นหลัง
@@ -34,41 +37,35 @@ body{
 
 body{
   overflow-x:hidden;
+
   background:#000000;
-  font-family:'Mali','Sarabun','Noto Sans Thai',sans-serif;
+
+  font-family:
+    'Mali',
+    'Sarabun',
+    'Noto Sans Thai',
+    sans-serif;
+
   color:var(--ink);
 }
 
+
 /* =========================
-   พื้นที่เอฟเฟกต์
+   พื้นที่ดาวตก
 ========================= */
 
 #sky{
   position:fixed;
+
   inset:0;
+
   pointer-events:none;
+
   overflow:hidden;
+
   z-index:0;
 }
 
-/* =========================
-   ดาว / หัวใจ / ดอกไม้
-========================= */
-
-.float{
-  position:absolute;
-  bottom:-40px;
-  opacity:.75;
-  animation:rise linear forwards;
-  user-select:none;
-}
-
-@keyframes rise{
-  to{
-    transform:translateY(-115vh) rotate(25deg);
-    opacity:0;
-  }
-}
 
 /* =========================
    ดาวตก
@@ -76,7 +73,9 @@ body{
 
 .meteor{
   position:absolute;
+
   top:-80px;
+
   width:2px;
   height:75px;
 
@@ -91,16 +90,29 @@ body{
   );
 
   filter:
-    drop-shadow(0 0 4px rgba(255,255,255,.9))
-    drop-shadow(0 0 10px rgba(255,255,255,.5));
+    drop-shadow(
+      0 0 4px
+      rgba(255,255,255,.9)
+    )
+    drop-shadow(
+      0 0 10px
+      rgba(255,255,255,.5)
+    );
 
-  animation:meteorFall linear forwards;
+  animation:
+    meteorFall
+    linear
+    forwards;
 }
+
 
 @keyframes meteorFall{
 
   0%{
-    transform:translate(0,0) rotate(25deg);
+    transform:
+      translate(0,0)
+      rotate(25deg);
+
     opacity:0;
   }
 
@@ -113,10 +125,15 @@ body{
   }
 
   100%{
-    transform:translate(220px,115vh) rotate(25deg);
+    transform:
+      translate(220px,115vh)
+      rotate(25deg);
+
     opacity:0;
   }
+
 }
+
 
 /* =========================
    เนื้อหาหลัก
@@ -124,149 +141,154 @@ body{
 
 .stage{
   position:relative;
+
   z-index:1;
 
   text-align:center;
 
   padding:
-    20px
+    22px
     18px
     40px;
 
   max-width:520px;
+
   margin:0 auto;
 }
 
+
 /* =========================
-   กระต่าย
+   กรอบคลิป
 ========================= */
 
-.bunnies{
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  padding:0 2%;
+.video-box{
+
+  width:58%;
+
+  max-width:250px;
+
+  margin:
+    4px auto
+    14px;
+
+  padding:5px;
+
+  background:rgba(255,255,255,.06);
+
+  border:
+    2px solid
+    rgba(255,184,208,.85);
+
+  border-radius:24px;
+
+  box-shadow:
+    0 0 12px
+    rgba(255,184,208,.28),
+
+    0 0 30px
+    rgba(255,150,190,.12);
+
+  overflow:hidden;
+
+  box-sizing:border-box;
+
 }
 
-.bunny{
-  margin:0 -2.5%;
-  animation:bob 3s ease-in-out var(--d) infinite;
-}
 
-.bunny svg{
-  width:100%;
-  height:auto;
+/* ตัวคลิป */
+
+.video-box video{
+
   display:block;
-  overflow:visible;
+
+  width:100%;
+
+  height:auto;
+
+  max-height:250px;
+
+  object-fit:cover;
+
+  border-radius:18px;
+
 }
 
-@keyframes bob{
-  50%{
-    transform:translateY(-8px);
-  }
-}
-
-/* หูกระต่าย */
-
-.ear-l{
-  transform-origin:78px 90px;
-  animation:wig 3.6s ease-in-out var(--d) infinite;
-}
-
-.ear-r{
-  transform-origin:122px 90px;
-  animation:wig 3.6s ease-in-out var(--d) infinite reverse;
-}
-
-@keyframes wig{
-
-  0%,
-  80%,
-  100%{
-    transform:rotate(0);
-  }
-
-  88%{
-    transform:rotate(-7deg);
-  }
-
-  94%{
-    transform:rotate(5deg);
-  }
-}
-
-/* ตากระต่าย */
-
-.eye{
-  transform-box:fill-box;
-  transform-origin:center;
-  animation:blink 4.5s var(--d) infinite;
-}
-
-@keyframes blink{
-
-  0%,
-  94%,
-  100%{
-    transform:scaleY(1);
-  }
-
-  97%{
-    transform:scaleY(.1);
-  }
-}
 
 /* =========================
    ชื่อ
 ========================= */
 
 h1{
-  margin:12px 0 4px;
 
-  font-size:clamp(
-    1.5rem,
-    6vw,
-    2.2rem
-  );
+  margin:
+    8px 0 4px;
+
+  font-size:
+    clamp(
+      1.5rem,
+      6vw,
+      2.2rem
+    );
 
   font-weight:700;
 
   color:#ffffff;
 
   text-shadow:
-    0 0 8px rgba(255,255,255,.35),
-    0 0 18px rgba(255,182,210,.25);
+    0 0 8px
+    rgba(255,255,255,.35),
+
+    0 0 18px
+    rgba(255,182,210,.25);
+
 }
+
 
 /* =========================
    เมนู
 ========================= */
 
 .menu{
+
   display:flex;
+
   flex-direction:column;
+
   gap:16px;
+
   margin-top:22px;
+
 }
 
-/* กล่องเมนู */
+
+/* =========================
+   กล่องเมนู
+========================= */
 
 .card{
+
   position:relative;
 
   background:var(--card);
 
-  border:3px solid var(--soft);
+  border:
+    3px solid
+    var(--soft);
 
-  outline:3px dotted var(--fur-line);
+  outline:
+    3px dotted
+    var(--line);
+
   outline-offset:4px;
 
   border-radius:28px;
 
-  padding:18px 20px;
+  padding:
+    18px 20px;
 
   box-shadow:
-    0 8px 20px rgba(255,150,190,.25);
+    0 8px 20px
+    rgba(255,150,190,.25);
 
   text-align:left;
 
@@ -275,31 +297,43 @@ h1{
     box-shadow .2s;
 
   cursor:pointer;
+
 }
+
 
 .card:hover,
 .card:active{
+
   transform:
     translateY(-4px)
     scale(1.01);
 
   box-shadow:
-    0 12px 26px rgba(255,150,190,.4);
+    0 12px 26px
+    rgba(255,150,190,.4);
+
 }
 
-/* ไอคอนวงกลม */
+
+/* =========================
+   ไอคอนวงกลม
+========================= */
 
 .card .tag{
+
   position:absolute;
 
   top:-16px;
+
   right:18px;
 
   font-size:26px;
 
   background:#000000;
 
-  border:3px solid var(--soft);
+  border:
+    3px solid
+    var(--soft);
 
   border-radius:50%;
 
@@ -307,13 +341,20 @@ h1{
   height:42px;
 
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
 }
 
-/* ตัวหนังสือ */
+
+/* =========================
+   ตัวหนังสือเมนู
+========================= */
 
 .card h2{
+
   margin:0;
 
   font-size:1.5rem;
@@ -321,44 +362,57 @@ h1{
   font-weight:700;
 
   color:var(--ink);
+
 }
 
+
 /* =========================
-   ปุ่มที่เป็นลิงก์
+   ลิงก์
 ========================= */
 
 .card-link{
+
   display:block;
 
   text-decoration:none;
 
   color:inherit;
+
 }
+
 
 /* =========================
    Game
 ========================= */
 
 .card.game{
-  padding:26px 22px;
+
+  padding:
+    26px 22px;
+
   text-align:center;
+
 }
 
+
 .card.game h2{
-  font-size:clamp(
-    3rem,
-    16vw,
-    4.6rem
-  );
+
+  font-size:
+    clamp(
+      3rem,
+      16vw,
+      4.6rem
+    );
 
   line-height:1;
 
   letter-spacing:2px;
+
 }
 
+
 /* =========================
-   ลด animation สำหรับผู้ใช้
-   ที่เปิด Reduce Motion
+   ลด Animation
 ========================= */
 
 @media (prefers-reduced-motion:reduce){
@@ -372,10 +426,12 @@ h1{
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =========================
-     เอฟเฟกต์บนพื้นหลัง
+     พื้นที่ดาวตก
 ========================= -->
 
 <div id="sky"></div>
@@ -387,62 +443,103 @@ h1{
 
 <main class="stage">
 
-  <!-- กระต่าย -->
-  <div
-    class="bunnies"
-    id="bunnies"
-    aria-label="กระต่ายน่ารัก"
-  ></div>
+
+  <!-- =======================
+       คลิปด้านบน
+  ======================== -->
+
+  <div class="video-box">
+
+    <video
+      src="snaptik_7658649579251977493_v3.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+    ></video>
+
+  </div>
 
 
-  <!-- ชื่อ -->
-  <h1>Rainy.Ren</h1>
+  <!-- =======================
+       ชื่อ
+  ======================== -->
+
+  <h1>
+    Rainy.Ren
+  </h1>
 
 
-  <!-- เมนู -->
+  <!-- =======================
+       เมนู
+  ======================== -->
+
   <div class="menu">
 
+
     <!-- Game -->
+
     <section class="card game">
 
-      <span class="tag">🎮</span>
+      <span class="tag">
+        🎮
+      </span>
 
-      <h2>Game</h2>
+      <h2>
+        Game
+      </h2>
 
     </section>
 
 
     <!-- About me -->
+
     <section class="card">
 
-      <span class="tag">🌷</span>
+      <span class="tag">
+        🌷
+      </span>
 
-      <h2>About me</h2>
+      <h2>
+        About me
+      </h2>
 
     </section>
 
 
     <!-- History -->
+
     <a
       class="card card-link"
       href="https://r3ny100709.github.io/history/"
     >
 
-      <span class="tag">📖</span>
+      <span class="tag">
+        📖
+      </span>
 
-      <h2>History</h2>
+      <h2>
+        History
+      </h2>
 
     </a>
 
 
     <!-- Setting -->
+
     <section class="card">
 
-      <span class="tag">⚙️</span>
+      <span class="tag">
+        ⚙️
+      </span>
 
-      <h2>Setting</h2>
+      <h2>
+        Setting
+      </h2>
 
     </section>
+
 
   </div>
 
@@ -452,273 +549,15 @@ h1{
 <script>
 
 /* =========================
-   กระต่าย
-========================= */
-
-const bunnySVG = `
-
-<svg viewBox="0 0 200 230">
-
-  <!-- หูซ้าย -->
-  <g class="ear-l">
-
-    <ellipse
-      cx="72"
-      cy="48"
-      rx="20"
-      ry="52"
-      fill="var(--fur)"
-      stroke="var(--fur-line)"
-      stroke-width="3"
-    />
-
-    <ellipse
-      cx="72"
-      cy="52"
-      rx="10"
-      ry="36"
-      fill="var(--ear)"
-    />
-
-  </g>
-
-
-  <!-- หูขวา -->
-  <g class="ear-r">
-
-    <ellipse
-      cx="128"
-      cy="48"
-      rx="20"
-      ry="52"
-      fill="var(--fur)"
-      stroke="var(--fur-line)"
-      stroke-width="3"
-    />
-
-    <ellipse
-      cx="128"
-      cy="52"
-      rx="10"
-      ry="36"
-      fill="var(--ear)"
-    />
-
-  </g>
-
-
-  <!-- ตัว -->
-  <ellipse
-    cx="100"
-    cy="190"
-    rx="52"
-    ry="38"
-    fill="var(--fur)"
-    stroke="var(--fur-line)"
-    stroke-width="3"
-  />
-
-
-  <!-- หาง -->
-  <circle
-    cx="150"
-    cy="205"
-    r="12"
-    fill="var(--fur)"
-    stroke="var(--fur-line)"
-    stroke-width="3"
-  />
-
-
-  <!-- หัว -->
-  <ellipse
-    cx="100"
-    cy="125"
-    rx="58"
-    ry="50"
-    fill="var(--fur)"
-    stroke="var(--fur-line)"
-    stroke-width="3"
-  />
-
-
-  <!-- ตาซ้าย -->
-  <ellipse
-    class="eye"
-    cx="76"
-    cy="122"
-    rx="6"
-    ry="8"
-    fill="#5a3344"
-  />
-
-
-  <!-- ตาขวา -->
-  <ellipse
-    class="eye"
-    cx="124"
-    cy="122"
-    rx="6"
-    ry="8"
-    fill="#5a3344"
-  />
-
-
-  <!-- แสงในตา -->
-  <circle
-    cx="78"
-    cy="119"
-    r="2"
-    fill="#fff"
-  />
-
-  <circle
-    cx="126"
-    cy="119"
-    r="2"
-    fill="#fff"
-  />
-
-
-  <!-- แก้มซ้าย -->
-  <ellipse
-    cx="62"
-    cy="140"
-    rx="10"
-    ry="6"
-    fill="var(--cheek)"
-    opacity=".6"
-  />
-
-
-  <!-- แก้มขวา -->
-  <ellipse
-    cx="138"
-    cy="140"
-    rx="10"
-    ry="6"
-    fill="var(--cheek)"
-    opacity=".6"
-  />
-
-
-  <!-- จมูก -->
-  <path
-    d="M94 136 q6 6 12 0 q-6 -4 -12 0z"
-    fill="var(--cheek)"
-  />
-
-
-  <!-- ปาก -->
-  <path
-    d="
-      M100 140
-      v6
-      M100 146
-      q-7 7 -14 2
-      M100 146
-      q7 7 14 2
-    "
-    fill="none"
-    stroke="#5a3344"
-    stroke-width="2.5"
-    stroke-linecap="round"
-  />
-
-</svg>
-
-`;
-
-
-/* สร้างกระต่าย */
-
-const bunnies =
-  document.getElementById('bunnies');
-
-[[46,0]].forEach(([w,d]) => {
-
-  const el =
-    document.createElement('div');
-
-  el.className = 'bunny';
-
-  el.style.width = w + '%';
-
-  el.style.setProperty(
-    '--d',
-    d + 's'
-  );
-
-  el.innerHTML = bunnySVG;
-
-  bunnies.appendChild(el);
-
-});
-
-
-/* =========================
-   เอฟเฟกต์หัวใจ / ดอกไม้
+   พื้นที่ดาวตก
 ========================= */
 
 const sky =
   document.getElementById('sky');
 
-const icons = [
-  '🌸',
-  '🤍',
-  '💗',
-  '🌷',
-  '✨'
-];
-
-
-function spawn(){
-
-  const el =
-    document.createElement('span');
-
-  el.className = 'float';
-
-  el.textContent =
-    icons[
-      Math.floor(
-        Math.random() * icons.length
-      )
-    ];
-
-  el.style.left =
-    Math.random() * 100 + 'vw';
-
-  el.style.fontSize =
-    14 + Math.random() * 20 + 'px';
-
-  el.style.animationDuration =
-    8 + Math.random() * 8 + 's';
-
-  sky.appendChild(el);
-
-  setTimeout(
-    () => el.remove(),
-    17000
-  );
-
-}
-
-
-/* เริ่มเอฟเฟกต์ */
-
-setInterval(spawn,900);
-
-for(let i=0;i<6;i++){
-  setTimeout(
-    spawn,
-    i * 200
-  );
-}
-
 
 /* =========================
-   ดาวตก
+   สร้างดาวตก
 ========================= */
 
 function spawnMeteor(){
@@ -726,37 +565,42 @@ function spawnMeteor(){
   const el =
     document.createElement('span');
 
-  el.className = 'meteor';
+  el.className =
+    'meteor';
 
 
-  /* ตำแหน่งเริ่มต้น */
+  /* จุดเริ่มต้นแบบสุ่ม */
 
   el.style.left =
     Math.random() * 100 + 'vw';
 
 
-  /* ความเร็ว */
+  /* ความเร็วแบบสุ่ม */
 
   el.style.animationDuration =
     2 + Math.random() * 2 + 's';
 
 
-  /* ความสว่าง */
+  /* ความสว่างแบบสุ่ม */
 
   el.style.opacity =
     0.5 + Math.random() * 0.5;
 
 
-  /* มุมดาวตก */
+  /* มุมดาวตกแบบสุ่ม */
 
   el.style.transform =
-    `rotate(${20 + Math.random() * 20}deg)`;
+    `rotate(
+      ${20 + Math.random() * 20}deg
+    )`;
 
+
+  /* เพิ่มดาวลงบนหน้าจอ */
 
   sky.appendChild(el);
 
 
-  /* ลบหลังตกเสร็จ */
+  /* ลบดาวหลังจากตกเสร็จ */
 
   setTimeout(
     () => el.remove(),
@@ -766,14 +610,31 @@ function spawnMeteor(){
 }
 
 
-/* สร้างดาวตกต่อเนื่อง */
+/* =========================
+   ดาวตกต่อเนื่อง
+========================= */
 
 setInterval(
   spawnMeteor,
   450
 );
 
+
+/* =========================
+   สร้างดาวชุดแรกทันที
+========================= */
+
+for(let i = 0; i < 8; i++){
+
+  setTimeout(
+    spawnMeteor,
+    i * 180
+  );
+
+}
+
 </script>
+
 
 </body>
 </html>
