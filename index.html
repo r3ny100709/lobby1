@@ -18,11 +18,12 @@
     }
 
     :root {
-      --blue: #a0e7ff;
-      --blue-light: #e6f8ff;
-      --pink: #ffb8d6;
-      --pink-light: #ffe6f2;
-      --white: #fffdfd;
+      --blue-main: #38bdf8;
+      --blue-light: #e0f2fe;
+      --blue-pale: #f0f9ff;
+      --white: #ffffff;
+      --text-main: #0369a1;
+      --text-dark: #0f172a;
     }
 
     html,
@@ -30,50 +31,30 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #080c14;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    }
+
+    body {
+      font-family: "Quicksand", sans-serif;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     }
 
     /* =========================
-       9:16 CONTAINER LOCK
-    ========================= */
-
-    .screen-container {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      max-width: 450px; /* จำกัดความกว้างไม่ให้เกินสัดส่วนมือถือแนวตั้ง */
-      max-height: 900px;
-      aspect-ratio: 9 / 16;
-      overflow: hidden;
-      background: #0d131f;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-      border-radius: 12px;
-    }
-
-    @media (min-width: 451px) {
-      .screen-container {
-        border: 2px solid rgba(255, 184, 214, 0.2);
-      }
-    }
-
-    /* =========================
-       MAIN LOBBY
+       MAIN LOBBY (FULLSCREEN)
     ========================= */
 
     .lobby {
       position: relative;
       width: 100%;
-      height: 100%;
+      height: 100vh;
+      height: 100dvh;
       overflow: hidden;
 
       background:
         linear-gradient(
           180deg,
-          rgba(15, 23, 38, 0.35),
-          rgba(10, 15, 26, 0.75)
+          rgba(240, 249, 255, 0.5),
+          rgba(224, 242, 254, 0.85)
         ),
         url("city-background.jpg") center / cover no-repeat;
 
@@ -89,13 +70,13 @@
       background:
         radial-gradient(
           circle at 15% 30%,
-          rgba(160, 231, 255, 0.2),
-          transparent 40%
+          rgba(255, 255, 255, 0.8),
+          transparent 50%
         ),
         radial-gradient(
           circle at 85% 20%,
-          rgba(255, 184, 214, 0.2),
-          transparent 40%
+          rgba(125, 211, 252, 0.3),
+          transparent 50%
         );
       
       pointer-events: none;
@@ -107,17 +88,17 @@
 
     .corner {
       position: absolute;
-      width: 40px;
-      height: 40px;
-      border-color: rgba(255, 184, 214, 0.5);
+      width: 45px;
+      height: 45px;
+      border-color: rgba(255, 255, 255, 0.9);
       pointer-events: none;
       z-index: 5;
     }
 
-    .corner.top-left { top: 12px; left: 12px; border-top: 2px solid; border-left: 2px solid; border-radius: 6px 0 0 0; }
-    .corner.top-right { top: 12px; right: 12px; border-top: 2px solid; border-right: 2px solid; border-radius: 0 6px 0 0; }
-    .corner.bottom-left { bottom: 12px; left: 12px; border-bottom: 2px solid; border-left: 2px solid; border-radius: 0 0 0 6px; }
-    .corner.bottom-right { bottom: 12px; right: 12px; border-bottom: 2px solid; border-right: 2px solid; border-radius: 0 0 6px 0; }
+    .corner.top-left { top: 15px; left: 15px; border-top: 3px solid; border-left: 3px solid; border-radius: 8px 0 0 0; }
+    .corner.top-right { top: 15px; right: 15px; border-top: 3px solid; border-right: 3px solid; border-radius: 0 8px 0 0; }
+    .corner.bottom-left { bottom: 15px; left: 15px; border-bottom: 3px solid; border-left: 3px solid; border-radius: 0 0 0 8px; }
+    .corner.bottom-right { bottom: 15px; right: 15px; border-bottom: 3px solid; border-right: 3px solid; border-radius: 0 0 8px 0; }
 
     /* =========================
        TOP CLOCK
@@ -125,18 +106,18 @@
 
     .clock {
       position: absolute;
-      top: 18px;
+      top: 22px;
       left: 50%;
       transform: translateX(-50%);
 
-      min-width: 130px;
-      padding: 6px 18px;
+      min-width: 150px;
+      padding: 8px 22px;
       text-align: center;
 
-      background: rgba(30, 41, 59, 0.75);
-      border: 1px solid rgba(255, 184, 214, 0.4);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(125, 211, 252, 0.5);
       border-radius: 20px;
-      box-shadow: 0 0 12px rgba(255, 184, 214, 0.15);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
       backdrop-filter: blur(10px);
       z-index: 10;
     }
@@ -144,10 +125,10 @@
     .clock span {
       display: block;
       font-family: "Orbitron", sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       letter-spacing: 2px;
-      color: var(--blue-light);
-      text-shadow: 0 0 8px rgba(160, 231, 255, 0.6);
+      color: var(--text-main);
+      text-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
     }
 
     /* =========================
@@ -157,7 +138,7 @@
     .ui {
       position: absolute;
       inset: 0;
-      padding: 75px 16px 85px;
+      padding: 85px 20px 95px;
       pointer-events: none;
       z-index: 8;
     }
@@ -166,94 +147,92 @@
       pointer-events: auto;
       position: absolute;
 
-      background: linear-gradient(
-        135deg,
-        rgba(26, 38, 57, 0.85),
-        rgba(15, 23, 38, 0.8)
-      );
-
-      border: 1px solid rgba(255, 184, 214, 0.35);
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid rgba(186, 230, 253, 0.9);
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.12);
       backdrop-filter: blur(12px);
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
     .panel:hover {
-      border-color: rgba(255, 184, 214, 0.7);
+      border-color: var(--blue-main);
+      transform: translateY(-2px);
     }
 
     .panel-title {
       font-family: "Orbitron", sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 2px;
-      color: var(--pink);
-      margin-bottom: 6px;
-      text-shadow: 0 0 6px rgba(255, 184, 214, 0.4);
+      color: var(--text-main);
+      margin-bottom: 8px;
+      font-weight: 700;
     }
 
     /* UPDATE PANEL */
     .update-panel {
-      left: 16px;
-      top: 110px;
-      width: 135px;
-      height: 180px;
-      padding: 14px 12px;
+      left: 20px;
+      top: 125px;
+      width: 150px;
+      height: 195px;
+      padding: 16px 14px;
     }
 
     .update-line {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 184, 214, 0.4), transparent);
-      margin: 8px 0;
+      background: rgba(186, 230, 253, 0.8);
+      margin: 10px 0;
     }
 
     .locked {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 9px;
-      color: rgba(240, 245, 255, 0.75);
-      font-weight: 500;
+      font-size: 10px;
+      color: var(--text-dark);
+      font-weight: 600;
     }
 
     .status {
-      padding: 2px 5px;
-      border: 1px solid rgba(255, 184, 214, 0.5);
-      border-radius: 5px;
-      color: var(--pink);
-      font-size: 7px;
+      padding: 2px 6px;
+      border: 1px solid rgba(125, 211, 252, 0.6);
+      border-radius: 6px;
+      color: var(--text-main);
+      font-size: 8px;
       letter-spacing: 1px;
-      background: rgba(255, 184, 214, 0.1);
+      background: var(--blue-pale);
     }
 
     /* RIGHT PANELS */
     .game-panel {
-      right: 16px;
-      top: 110px;
-      width: 140px;
-      height: 105px;
-      padding: 14px 12px;
+      right: 20px;
+      top: 125px;
+      width: 155px;
+      height: 115px;
+      padding: 16px 14px;
     }
 
     .me-panel {
-      right: 16px;
-      top: 225px;
-      width: 140px;
-      height: 115px;
-      padding: 14px 12px;
+      right: 20px;
+      top: 255px;
+      width: 155px;
+      height: 125px;
+      padding: 16px 14px;
     }
 
     .empty {
       width: 100%;
-      height: 48px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px dashed rgba(160, 231, 255, 0.25);
-      border-radius: 6px;
-      color: rgba(225, 242, 250, 0.4);
+      border: 1.5px dashed rgba(125, 211, 252, 0.5);
+      border-radius: 8px;
+      color: #0284c7;
       font-size: 9px;
+      font-weight: 600;
       letter-spacing: 1px;
+      background: rgba(240, 249, 255, 0.5);
     }
 
     /* =========================
@@ -263,10 +242,10 @@
     .character-area {
       position: absolute;
       left: 50%;
-      bottom: 85px;
+      bottom: 90px;
       transform: translateX(-50%);
-      width: 240px;
-      height: 380px;
+      width: 220px;
+      height: 360px;
       display: flex;
       justify-content: center;
       align-items: flex-end;
@@ -275,11 +254,10 @@
     }
 
     .character {
-      width: 210px;
-      height: 360px;
+      width: 190px;
+      height: 340px;
       
-      /* รูปตัวละครอนิเมะสาวผมเงินที่คุณส่งมา */
-      background-image: url("https://i.ibb.co/1GzR17r0/image-6.png"); /* อัปเดตลิงก์รูปภาพตัวละครของคุณที่นี่ */
+      background-image: url("https://i.ibb.co/1GzR17r0/image-6.png");
       
       background-size: contain;
       background-repeat: no-repeat;
@@ -293,7 +271,7 @@
 
     .character:hover {
       transform: scale(1.03);
-      filter: brightness(1.1);
+      filter: brightness(1.05);
     }
 
     @keyframes floatChar {
@@ -308,18 +286,18 @@
     .speech {
       position: absolute;
       left: 50%;
-      bottom: 430px;
-      width: 185px;
-      padding: 10px 14px;
+      bottom: 425px;
+      width: 190px;
+      padding: 12px 16px;
       transform: translateX(-50%) scale(0.85);
       opacity: 0;
       visibility: hidden;
 
-      background: rgba(255, 240, 246, 0.95);
-      color: #3b2b35;
-      border: 1px solid rgba(255, 184, 214, 0.9);
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--text-dark);
+      border: 1.5px solid rgba(125, 211, 252, 0.8);
       border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
 
       transition: opacity 0.25s ease, transform 0.25s ease;
       z-index: 20;
@@ -333,9 +311,10 @@
 
     .speech-text {
       text-align: center;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      line-height: 1.4;
+      line-height: 1.5;
+      color: var(--text-main);
     }
 
     .speech::after {
@@ -346,9 +325,9 @@
       width: 12px;
       height: 12px;
       transform: translateX(-50%) rotate(45deg);
-      background: rgba(255, 240, 246, 0.95);
-      border-right: 1px solid rgba(255, 184, 214, 0.9);
-      border-bottom: 1px solid rgba(255, 184, 214, 0.9);
+      background: rgba(255, 255, 255, 0.95);
+      border-right: 1.5px solid rgba(125, 211, 252, 0.8);
+      border-bottom: 1.5px solid rgba(125, 211, 252, 0.8);
     }
 
     /* =========================
@@ -358,58 +337,61 @@
     .bottom-menu {
       position: absolute;
       left: 50%;
-      bottom: 18px;
+      bottom: 22px;
       transform: translateX(-50%);
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       z-index: 15;
-      width: 92%;
+      width: 90%;
+      max-width: 480px;
       justify-content: space-between;
     }
 
     .menu-button {
       flex: 1;
-      height: 40px;
-      padding: 0 4px;
+      height: 42px;
+      padding: 0 6px;
 
-      border: 1px solid rgba(255, 184, 214, 0.4);
+      border: 1.5px solid rgba(186, 230, 253, 0.9);
       border-radius: 10px;
-      background: rgba(25, 35, 52, 0.85);
-      color: rgba(240, 245, 255, 0.9);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text-dark);
 
       font-family: "Quicksand", sans-serif;
-      font-size: 9px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.1);
       transition: all 0.2s ease;
     }
 
     .menu-button:hover {
-      background: rgba(255, 184, 214, 0.2);
-      border-color: var(--pink);
+      background: var(--blue-pale);
+      border-color: var(--blue-main);
+      color: var(--text-main);
       transform: translateY(-2px);
     }
 
-    /* ปุ่ม START ขนาดใหญ่เป็นพิเศษ สะใจเด่นชัด */
+    /* ปุ่ม START ขนาดใหญ่เด่นชัด */
     .menu-button.start {
-      flex: 1.6; /* ขยายสัดส่วนให้กว้างกว่าปุ่มอื่น */
-      height: 46px; /* สูงกว่าปุ่มอื่น */
-      color: #1a1e29;
-      background: linear-gradient(135deg, var(--blue-light), var(--blue));
-      border: 2px solid rgba(255, 255, 255, 0.95);
-      font-size: 12px;
+      flex: 1.6;
+      height: 48px;
+      color: var(--white);
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border: 2px solid var(--white);
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 1px;
-      box-shadow: 0 0 18px rgba(160, 231, 255, 0.5);
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
     }
 
     .menu-button.start:hover {
-      filter: brightness(1.1);
-      box-shadow: 0 0 22px rgba(160, 231, 255, 0.7);
+      filter: brightness(1.08);
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.6);
+      color: var(--white);
     }
 
     /* =========================
@@ -419,103 +401,102 @@
     .credit {
       position: absolute;
       left: 50%;
-      bottom: 64px;
+      bottom: 72px;
       transform: translateX(-50%);
       font-family: "Orbitron", sans-serif;
-      font-size: 8px;
+      font-size: 9px;
       letter-spacing: 1px;
-      color: rgba(230, 247, 255, 0.6);
+      color: var(--text-main);
       white-space: nowrap;
       z-index: 10;
+      opacity: 0.85;
     }
 
     .credit a {
-      color: var(--pink);
+      color: var(--text-main);
       text-decoration: none;
-      text-shadow: 0 0 6px rgba(255, 188, 218, 0.6);
+      font-weight: 700;
     }
 
     .credit a:hover {
-      color: var(--blue);
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="screen-container">
-    <main class="lobby">
+  <main class="lobby">
 
-      <!-- Decorative corners -->
-      <div class="corner top-left"></div>
-      <div class="corner top-right"></div>
-      <div class="corner bottom-left"></div>
-      <div class="corner bottom-right"></div>
+    <!-- Decorative corners -->
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
 
-      <!-- REAL-TIME CLOCK -->
-      <div class="clock">
-        <span id="clock">00:00</span>
-      </div>
+    <!-- REAL-TIME CLOCK -->
+    <div class="clock">
+      <span id="clock">00:00</span>
+    </div>
 
-      <section class="ui">
-        <!-- UPDATE -->
-        <div class="panel update-panel">
-          <div class="panel-content">
-            <div class="panel-title">UPDATE</div>
-            <div class="update-line"></div>
-            <div class="locked"><span>UPDATE 01</span><span class="status">LOCKED</span></div>
-            <div class="update-line"></div>
-            <div class="locked"><span>UPDATE 02</span><span class="status">LOCKED</span></div>
-            <div class="update-line"></div>
-            <div class="locked"><span>UPDATE 03</span><span class="status">LOCKED</span></div>
-          </div>
+    <section class="ui">
+      <!-- UPDATE -->
+      <div class="panel update-panel">
+        <div class="panel-content">
+          <div class="panel-title">UPDATE</div>
+          <div class="update-line"></div>
+          <div class="locked"><span>UPDATE 01</span><span class="status">LOCKED</span></div>
+          <div class="update-line"></div>
+          <div class="locked"><span>UPDATE 02</span><span class="status">LOCKED</span></div>
+          <div class="update-line"></div>
+          <div class="locked"><span>UPDATE 03</span><span class="status">LOCKED</span></div>
         </div>
+      </div>
 
-        <!-- ABOUT GAME -->
-        <div class="panel game-panel">
-          <div class="panel-content">
-            <div class="panel-title">ABOUT GAME</div>
-            <div class="empty">COMING SOON</div>
-          </div>
+      <!-- ABOUT GAME -->
+      <div class="panel game-panel">
+        <div class="panel-content">
+          <div class="panel-title">ABOUT GAME</div>
+          <div class="empty">COMING SOON</div>
         </div>
+      </div>
 
-        <!-- ABOUT ME -->
-        <div class="panel me-panel">
-          <div class="panel-content">
-            <div class="panel-title">ABOUT ME</div>
-            <div class="empty">PROFILE</div>
-          </div>
+      <!-- ABOUT ME -->
+      <div class="panel me-panel">
+        <div class="panel-content">
+          <div class="panel-title">ABOUT ME</div>
+          <div class="empty">PROFILE</div>
         </div>
-      </section>
-
-      <!-- CHARACTER -->
-      <div class="character-area">
-        <div class="character" id="character" title="Click me!"></div>
       </div>
+    </section>
 
-      <!-- SPEECH -->
-      <div class="speech" id="speech">
-        <div class="speech-text" id="speechText"></div>
-      </div>
+    <!-- CHARACTER -->
+    <div class="character-area">
+      <div class="character" id="character" title="Click me!"></div>
+    </div>
 
-      <!-- INSTAGRAM -->
-      <div class="credit">
-        <a href="https://www.instagram.com/kllurself.ut/" target="_blank" rel="noopener noreferrer">
-          IG: kllurself.ut
-        </a>
-      </div>
+    <!-- SPEECH -->
+    <div class="speech" id="speech">
+      <div class="speech-text" id="speechText"></div>
+    </div>
 
-      <!-- BOTTOM MENU -->
-      <nav class="bottom-menu">
-        <button class="menu-button">About me</button>
-        <button class="menu-button">ประวัติเกม</button>
-        <button class="menu-button start">START</button>
-        <button class="menu-button">Update</button>
-        <button class="menu-button">Setting</button>
-      </nav>
+    <!-- INSTAGRAM -->
+    <div class="credit">
+      <a href="https://www.instagram.com/kllurself.ut/" target="_blank" rel="noopener noreferrer">
+        IG: kllurself.ut
+      </a>
+    </div>
 
-    </main>
-  </div>
+    <!-- BOTTOM MENU -->
+    <nav class="bottom-menu">
+      <button class="menu-button">About me</button>
+      <button class="menu-button">ประวัติเกม</button>
+      <button class="menu-button start">START</button>
+      <button class="menu-button">Update</button>
+      <button class="menu-button">Setting</button>
+    </nav>
+
+  </main>
 
   <script>
     /* =========================
