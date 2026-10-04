@@ -1,99 +1,49 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1, viewport-fit=cover"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rainy.Ren</title>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-  rel="stylesheet"
->
-
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
 :root{
   --red:#ff1738;
   --red-dark:#8f1025;
   --red-soft:#ff5268;
   --white:#ffffff;
-
   --card:rgba(10,10,10,.78);
 }
-
-
-/* =====================================================
-   BASIC
-===================================================== */
-
 *{
   box-sizing:border-box;
 }
-
 html,
 body{
   margin:0;
   min-height:100%;
 }
-
 body{
   overflow-x:hidden;
-
   background:#000;
-
   font-family:
-    'Orbitron',
+    'Oxanium',
     'Sarabun',
     'Noto Sans Thai',
     sans-serif;
-
   color:white;
 }
-
-/* =====================================================
-   STAR / METEOR AREA
-===================================================== */
-
 #sky{
   position:fixed;
-
   inset:0;
-
   pointer-events:none;
-
   overflow:hidden;
-
   z-index:0;
 }
-
-
-/* =====================================================
-   METEOR
-===================================================== */
-
 .meteor{
-
   position:absolute;
-
   top:-80px;
-
   width:2px;
-
   height:75px;
-
   border-radius:50%;
-
   background:linear-gradient(
     to bottom,
     rgba(255,255,255,0),
@@ -101,502 +51,241 @@ body{
     rgba(255,23,56,.9),
     #fff
   );
-
   filter:
-    drop-shadow(
-      0 0 5px
-      rgba(255,23,56,.9)
-    )
-    drop-shadow(
-      0 0 14px
-      rgba(255,23,56,.45)
-    );
-
+    drop-shadow(0 0 5px rgba(255,23,56,.9))
+    drop-shadow(0 0 14px rgba(255,23,56,.45));
   animation:
     meteorFall
     linear
     forwards;
 }
-
-
 @keyframes meteorFall{
-
   0%{
     transform:
       translate(0,0)
       rotate(25deg);
-
     opacity:0;
   }
-
   10%{
     opacity:1;
   }
-
   75%{
     opacity:1;
   }
-
   100%{
     transform:
       translate(220px,115vh)
       rotate(25deg);
-
     opacity:0;
   }
-
 }
-
-
-/* =====================================================
-   MAIN
-===================================================== */
-
 .stage{
-
   position:relative;
-
   z-index:1;
-
   width:100%;
-
   max-width:520px;
-
   min-height:100vh;
-
   margin:0 auto;
-
   padding:
     24px
     18px
     45px;
-
   text-align:center;
-
 }
-
-
-/* =====================================================
-   VIDEO
-===================================================== */
-
 .video-box{
-
   width:58%;
-
   max-width:250px;
-
   margin:
     4px auto
     16px;
-
   padding:5px;
-
   background:
     rgba(0,0,0,.75);
-
   border:
     2px solid
     rgba(255,23,56,.85);
-
   border-radius:22px;
-
   box-shadow:
-
-    0 0 10px
-    rgba(255,23,56,.45),
-
-    0 0 28px
-    rgba(255,23,56,.18);
-
+    0 0 10px rgba(255,23,56,.45),
+    0 0 28px rgba(255,23,56,.18);
   overflow:hidden;
 }
-
-
 .video-box video{
-
   display:block;
-
   width:100%;
-
   height:auto;
-
   max-height:250px;
-
   object-fit:cover;
-
   border-radius:16px;
-
   pointer-events:none;
-
   user-select:none;
-
   -webkit-user-select:none;
-
   -webkit-touch-callout:none;
-
   -webkit-user-drag:none;
 }
-
-
-/* =====================================================
-   TITLE
-===================================================== */
-
 h1{
-
   margin:
     8px 0 2px;
-
   font-size:
     clamp(
       1.6rem,
       7vw,
       2.3rem
     );
-
   font-weight:700;
-
   letter-spacing:1px;
-
   color:#fff;
-
   text-shadow:
-
-    0 0 6px
-    rgba(255,255,255,.7),
-
-    0 0 16px
-    rgba(255,23,56,.65),
-
-    0 0 30px
-    rgba(255,23,56,.35);
-
+    0 0 6px rgba(255,255,255,.7),
+    0 0 16px rgba(255,23,56,.65),
+    0 0 30px rgba(255,23,56,.35);
 }
-
-
-/* =====================================================
-   MENU
-===================================================== */
-
 .menu{
-
   display:flex;
-
   flex-direction:column;
-
   gap:16px;
-
   margin-top:26px;
-
 }
-
-
-/* =====================================================
-   CARD
-===================================================== */
-
 .card{
-
   position:relative;
-
   display:block;
-
   width:100%;
-
   min-height:70px;
-
   padding:
     18px
     22px;
-
   background:
     linear-gradient(
       135deg,
       rgba(20,20,20,.92),
       rgba(5,5,5,.82)
     );
-
   border:
     1px solid
     rgba(255,23,56,.7);
-
   border-radius:20px;
-
   box-shadow:
-
-    0 0 8px
-    rgba(255,23,56,.12),
-
-    inset 0 0 15px
-    rgba(255,23,56,.035);
-
+    0 0 8px rgba(255,23,56,.12),
+    inset 0 0 15px rgba(255,23,56,.035);
   text-align:left;
-
   text-decoration:none;
-
   transition:
     transform .2s ease,
     border-color .2s ease,
     box-shadow .2s ease;
-
   cursor:pointer;
 }
-
-
-/* =====================================================
-   CARD HOVER / ACTIVE
-===================================================== */
-
 .card:hover,
 .card:active{
-
   transform:
     translateY(-3px);
-
   border-color:
     rgba(255,82,104,1);
-
   box-shadow:
-
-    0 0 10px
-    rgba(255,23,56,.4),
-
-    0 0 25px
-    rgba(255,23,56,.18),
-
-    inset 0 0 18px
-    rgba(255,23,56,.06);
-
+    0 0 10px rgba(255,23,56,.4),
+    0 0 25px rgba(255,23,56,.18),
+    inset 0 0 18px rgba(255,23,56,.06);
 }
-
-
-/* =====================================================
-   EMOJI
-===================================================== */
-
 .card .tag{
-
   position:absolute;
-
   top:50%;
-
   right:18px;
-
   transform:
     translateY(-50%);
-
   width:42px;
-
   height:42px;
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   background:#050505;
-
   border:
     1px solid
     rgba(255,23,56,.8);
-
   border-radius:50%;
-
   font-size:24px;
-
   box-shadow:
-
-    0 0 8px
-    rgba(255,23,56,.25);
+    0 0 8px rgba(255,23,56,.25);
 }
-
-
-/* =====================================================
-   TEXT
-===================================================== */
-
 .card h2{
-
   margin:0;
-
   color:#fff;
-
   font-size:1.35rem;
-
   font-weight:700;
-
   letter-spacing:.5px;
-
   text-shadow:
-
-    0 0 8px
-    rgba(255,23,56,.35);
+    0 0 8px rgba(255,23,56,.35);
 }
-
-
-/* =====================================================
-   START BUTTON
-===================================================== */
-
 .card.start{
-
   min-height:92px;
-
   padding:
     22px;
-
   text-align:center;
-
   border:
     2px solid
     var(--red);
-
   border-radius:24px;
-
   background:
-
     linear-gradient(
       135deg,
       rgba(50,0,8,.92),
       rgba(8,8,8,.95)
     );
-
   box-shadow:
-
-    0 0 12px
-    rgba(255,23,56,.5),
-
-    0 0 32px
-    rgba(255,23,56,.2),
-
-    inset 0 0 22px
-    rgba(255,23,56,.08);
+    0 0 12px rgba(255,23,56,.5),
+    0 0 32px rgba(255,23,56,.2),
+    inset 0 0 22px rgba(255,23,56,.08);
 }
-
-
 .card.start h2{
-
   font-size:
     clamp(
       2.6rem,
       13vw,
       4rem
     );
-
   line-height:1;
-
   letter-spacing:4px;
-
   color:#fff;
-
   text-shadow:
-
-    0 0 7px
-    rgba(255,255,255,.7),
-
-    0 0 16px
-    rgba(255,23,56,.9),
-
-    0 0 35px
-    rgba(255,23,56,.55);
+    0 0 7px rgba(255,255,255,.7),
+    0 0 16px rgba(255,23,56,.9),
+    0 0 35px rgba(255,23,56,.55);
 }
-
-
 .card.start .tag{
-
   top:-12px;
-
   right:18px;
-
   transform:none;
-
   border:
     2px solid
     var(--red);
-
   box-shadow:
-
-    0 0 10px
-    rgba(255,23,56,.65),
-
-    0 0 22px
-    rgba(255,23,56,.25);
+    0 0 10px rgba(255,23,56,.65),
+    0 0 22px rgba(255,23,56,.25);
 }
-
-
-/* =====================================================
-   RED ACCENT
-===================================================== */
-
 .card::before{
-
   content:"";
-
   position:absolute;
-
   left:14px;
-
   top:14px;
-
   bottom:14px;
-
   width:2px;
-
   border-radius:10px;
-
   background:
     rgba(255,23,56,.75);
-
   box-shadow:
-
-    0 0 7px
-    rgba(255,23,56,.5);
+    0 0 7px rgba(255,23,56,.5);
 }
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
 @media (prefers-reduced-motion:reduce){
-
   *{
     animation:none !important;
     transition:none !important;
   }
-
 }
-
 </style>
-
 </head>
-
-
 <body>
-
-
-<!-- =====================================================
-     METEORS
-===================================================== -->
-
 <div id="sky"></div>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main class="stage">
-
-
-  <!-- ===================================================
-       VIDEO
-  ==================================================== -->
-
   <div class="video-box">
-
     <video
       id="lobbyVideo"
       autoplay
@@ -609,215 +298,100 @@ h1{
       controlslist="nodownload nofullscreen noremoteplayback"
       tabindex="-1"
     >
-
       <source
         src="./snaptik_7658649579251977493_v3.mp4"
         type="video/mp4"
       >
-
     </video>
-
   </div>
-
-
-  <!-- ===================================================
-       TITLE
-  ==================================================== -->
-
-  <h1>
-    Rainy.Ren
-  </h1>
-
-
-  <!-- ===================================================
-       MENU
-  ==================================================== -->
-
+  <h1>Rainy.Ren</h1>
   <div class="menu">
-
-
-    <!-- START -->
-
-    <section class="card start">
-
-      <span class="tag">
-        🎮
-      </span>
-
-      <h2>
-        START
-      </h2>
-
-    </section>
-
-
-    <!-- ABOUT ME -->
-
-    <section class="card">
-
-      <span class="tag">
-        🌷
-      </span>
-
-      <h2>
-        About me
-      </h2>
-
-    </section>
-
-
-    <!-- HISTORY -->
-
-    <a
-      class="card"
-      href="https://r3ny100709.github.io/history/"
-    >
-
-      <span class="tag">
-        📖
-      </span>
-
-      <h2>
-        History
-      </h2>
-
-    </a>
-
-
-    <!-- SETTING -->
-
-    <section class="card">
-
-      <span class="tag">
-        ⚙️
-      </span>
-
-      <h2>
-        Setting
-      </h2>
-
-    </section>
-
-
+<section class="card start">
+  <span class="tag">🎮</span>
+  <h2>START</h2>
+</section>
+<section class="card">
+  <span class="tag">🌷</span>
+  <h2>About me</h2>
+</section>
+<a
+  class="card"
+  href="https://r3ny100709.github.io/history/"
+>
+  <span class="tag">📖</span>
+  <h2>History</h2>
+</a>
+<section class="card">
+  <span class="tag">⚙️</span>
+  <h2>Setting</h2>
+</section>
   </div>
-
 </main>
-
-
 <script>
-
-/* =====================================================
-   VIDEO
-===================================================== */
-
 const video =
   document.getElementById('lobbyVideo');
-
-
 function keepVideoPlaying(){
-
   if(video.paused){
-
     video.play().catch(
       () => {}
     );
-
   }
-
 }
-
-
 video.addEventListener(
   'pause',
   keepVideoPlaying
 );
-
-
 video.addEventListener(
   'ended',
   () => {
-
     video.currentTime = 0;
-
     keepVideoPlaying();
-
   }
 );
-
-
 video.play().catch(
   () => {}
 );
-
-
 setInterval(
   keepVideoPlaying,
   500
 );
-
-
-/* =====================================================
-   METEORS
-===================================================== */
-
 const sky =
   document.getElementById('sky');
-
-
 function spawnMeteor(){
-
   const el =
     document.createElement('span');
-
   el.className =
     'meteor';
-
   el.style.left =
     Math.random() * 100 + 'vw';
-
   el.style.animationDuration =
     2 + Math.random() * 2 + 's';
-
   el.style.opacity =
     .5 + Math.random() * .5;
-
   el.style.transform =
     `rotate(
       ${20 + Math.random() * 20}deg
     )`;
-
   sky.appendChild(el);
-
   setTimeout(
     () => el.remove(),
     5000
   );
-
 }
-
-
 setInterval(
   spawnMeteor,
   450
 );
-
-
 for(
   let i = 0;
   i < 8;
   i++
 ){
-
   setTimeout(
     spawnMeteor,
     i * 180
   );
-
 }
-
 </script>
-
-
 </body>
-
 </html>
